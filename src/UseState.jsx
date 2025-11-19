@@ -39,7 +39,7 @@ const UseState = ({ name }) => {
             <h2>Eliminar {name}</h2>
             <p>Por favor, escribe el codigo de seguridade para comprobar que uqieres eliminar.</p>
 
-            {error && (
+            {(error && !loading) && (
                 <p>Error: El codigo es incorreto</p>
             )}
 
@@ -52,10 +52,17 @@ const UseState = ({ name }) => {
                 placeholder="Codigo de Seguridad" 
                 value={value}
                 onChange={(event) => {
-                    setValue(event.target.value)
+                    // setError(false);
+                    setValue(event.target.value);
                 }}
             />
-            <button onClick={() => setLoading(true)} >Comprovar</button>
+            <button 
+                onClick={() => {
+                    // setError(false); // ESTE FUE
+                    setLoading(true);
+                }}
+            > 
+            Comprovar</button>
         </div>
     )
 }
